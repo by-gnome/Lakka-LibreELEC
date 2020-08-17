@@ -1,0 +1,13 @@
+--- a/drivers/base/firmware_loader/main.c
++++ a/drivers/base/firmware_loader/main.c
+@@ -442,7 +442,9 @@
+ 	"/lib/firmware/updates/" UTS_RELEASE,
+ 	"/lib/firmware/updates",
+ 	"/lib/firmware/" UTS_RELEASE,
+-	"/lib/firmware"
++	"/lib/firmware",
++	"/usr/lib/firmware" UTS_RELEASE,
++	"/usr/lib/firmware"
+ };
+ 
+ /*

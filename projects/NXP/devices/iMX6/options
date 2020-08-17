@@ -31,7 +31,7 @@
     KERNEL_EXTRA_DEPENDS_TARGET=""
 
   # Kernel to use
-    LINUX="linux-5.4"
+    LINUX="mainline"
 
   # Kernel extra command line
     EXTRA_CMDLINE="video=HDMI-A-1:1920x1080@60 ssh"
