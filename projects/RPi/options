@@ -111,10 +111,10 @@
   # additional Firmware to use (dvb-firmware, misc-firmware, wlan-firmware)
   # Space separated list is supported,
   # e.g. FIRMWARE="dvb-firmware misc-firmware wlan-firmware"
-    FIRMWARE="misc-firmware wlan-firmware dvb-firmware brcmfmac_sdio-firmware-rpi"
+    FIRMWARE="kernel-firmware misc-firmware wlan-firmware dvb-firmware brcmfmac_sdio-firmware-rpi"
 
     if [ "$DISTRO" = "Lakka" ]; then
-      FIRMWARE="misc-firmware wlan-firmware brcmfmac_sdio-firmware-rpi"
+      FIRMWARE="kernel-firmware misc-firmware wlan-firmware brcmfmac_sdio-firmware-rpi"
     fi
 
   # build with installer (yes / no)

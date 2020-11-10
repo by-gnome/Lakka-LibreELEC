@@ -72,10 +72,10 @@
   # additional Firmware to use (dvb-firmware, misc-firmware, wlan-firmware)
   # Space separated list is supported,
   # e.g. FIRMWARE="dvb-firmware misc-firmware wlan-firmware"
-    FIRMWARE="misc-firmware wlan-firmware dvb-firmware iwlwifi-firmware"
+    FIRMWARE="kernel-firmware misc-firmware wlan-firmware dvb-firmware iwlwifi-firmware"
 
     if [ "$DISTRO" = "Lakka" ]; then
-      FIRMWARE="misc-firmware wlan-firmware iwlwifi-firmware firmware-realtek"
+      FIRMWARE="kernel-firmware misc-firmware wlan-firmware iwlwifi-firmware firmware-realtek"
     fi
 
   # additional drivers to install:
