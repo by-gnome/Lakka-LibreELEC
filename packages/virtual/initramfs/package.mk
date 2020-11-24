@@ -7,8 +7,8 @@ PKG_VERSION=""
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.openelec.tv"
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain libc:init busybox:init linux:init plymouth-lite:init util-linux:init e2fsprogs:init dosfstools:init terminus-font:init"
-if [ "$LINUX" != "mainline-5.9" ]; then
+PKG_DEPENDS_TARGET="toolchain libc:init busybox:init plymouth-lite:init util-linux:init e2fsprogs:init dosfstools:init terminus-font:init"
+if [ "${LINUX//.*/}" != "mainline-5" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET fakeroot:host"
 fi
 PKG_SECTION="virtual"
@@ -27,7 +27,7 @@ if [ "$PROJECT" = "Gamegirl" ]; then
 fi
 
 post_install() {
-  if [ "$LINUX" != "mainline-5.9" ]; then
+  if [ "${LINUX//.*/}" != "mainline-5" ]; then
   ( cd $BUILD/initramfs
     if [ "$TARGET_ARCH" = "x86_64" ]; then
       ln -sfn /usr/lib $BUILD/initramfs/lib64

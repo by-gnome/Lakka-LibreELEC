@@ -7,7 +7,7 @@ PKG_LICENSE="GPL"
 PKG_SITE="http://www.kernel.org"
 PKG_DEPENDS_HOST="ccache:host openssl:host"
 PKG_DEPENDS_TARGET="toolchain linux:host kmod:host xz:host wireless-regdb keyutils $KERNEL_EXTRA_DEPENDS_TARGET"
-if [ "$LINUX" != "mainline-5.9" ]; then
+if [ "${LINUX//.*/}" != "mainline-5" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET cpio:host"
 fi
 PKG_DEPENDS_INIT="toolchain"
@@ -59,6 +59,12 @@ case "$LINUX" in
     PKG_URL="https://www.kernel.org/pub/linux/kernel/v5.x/$PKG_NAME-$PKG_VERSION.tar.xz"
     PKG_PATCH_DIRS="default"
     ;;
+  mainline-5.1)
+    PKG_VERSION="5.1.18"
+    PKG_SHA256="6013e7dcf59d7c1b168d8edce3dbd61ce340ff289541f920dbd0958bef98f36a"
+    PKG_URL="https://www.kernel.org/pub/linux/kernel/v5.x/$PKG_NAME-$PKG_VERSION.tar.xz"
+    PKG_PATCH_DIRS="default"
+    ;;
   *)
     PKG_VERSION="5.1.18"
     PKG_SHA256="6013e7dcf59d7c1b168d8edce3dbd61ce340ff289541f920dbd0958bef98f36a"
@@ -93,7 +99,7 @@ fi
 post_patch() {
   cp $PKG_KERNEL_CFG_FILE $PKG_BUILD/.config
 
-  if [ "$LINUX" != "mainline-5.9" ]; then
+  if [ "${LINUX//.*/}" != "mainline-5" ]; then
     sed -i -e "s|^CONFIG_INITRAMFS_SOURCE=.*$|CONFIG_INITRAMFS_SOURCE=\"$BUILD/image/initramfs.cpio\"|" $PKG_BUILD/.config
   else
     sed -i -e "s|^CONFIG_INITRAMFS_SOURCE=.*$|CONFIG_INITRAMFS_SOURCE=\"$(kernel_initramfs_confs) $BUILD/initramfs\"|" $PKG_BUILD/.config
