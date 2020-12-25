@@ -165,8 +165,7 @@ pre_make_target() {
 
   if [ -d $PKG_BUILD/external-firmware/ ]; then
     FW_LIST="$(find $PKG_BUILD/external-firmware \( -type f -o -type l \) \( -iname '*.bin' -o -iname '*.fw' -o -path '*/intel-ucode/*' \) | sed 's|.*external-firmware/||' | sort | xargs)"
-    sed -i "s|CONFIG_EXTRA_FIRMWARE=.*|CONFIG_EXTRA_FIRMWARE=\"${FW_LIST}\"|" $PKG_BUILD/.config
-    sed -i -e "/CONFIG_EXTRA_FIRMWARE_DIR/d" -e "/CONFIG_EXTRA_FIRMWARE=.../a CONFIG_EXTRA_FIRMWARE_DIR=\"external-firmware\"" $PKG_BUILD/.config
+    sed -i -e "s|@EXTRA_FIRMWARE@|$FW_LIST|" $PKG_BUILD/.config
   fi
 
   kernel_make olddefconfig
