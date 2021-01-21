@@ -1,0 +1,5 @@
+brcm/brcmfmac4329-sdio.bin
+brcm/brcmfmac4330-sdio.bin
+brcm/brcmfmac4339-sdio.bin
+rtl_bt/*
+rtlwifi/*
