@@ -13,7 +13,10 @@ PKG_LONGDESC="Firmware for brcm bluetooth chips used on RaspberryPi devices."
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  DESTDIR=$INSTALL/$(get_kernel_overlay_dir) ./install
+  FW_TARGET_DIR="$PKG_BUILD/.install-firmware"
+
+  mkdir -p $FW_TARGET_DIR
+    cp -aT firmware $FW_TARGET_DIR
 }
 
 post_makeinstall_target() {

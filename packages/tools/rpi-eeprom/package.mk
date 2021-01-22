@@ -13,7 +13,7 @@ PKG_LONGDESC="rpi-eeprom: firmware, config and scripts to update RPi4 SPI bootlo
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  DESTDIR=${INSTALL}/$(get_kernel_overlay_dir)/lib/firmware/raspberrypi/bootloader
+  DESTDIR=$PKG_BUILD/.install-firmware/raspberrypi/bootloader
 
   mkdir -p ${DESTDIR}
     _dirs="critical stable"

@@ -23,14 +23,16 @@ make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/$(get_full_firmware_dir)/qcom/venus-1.8/
-    cp -a linux-board-support-package-v${PKG_VERSION%.0}/proprietary-linux/* $INSTALL/$(get_full_firmware_dir)
-    cp -a linux-board-support-package-v${PKG_VERSION%.0}/proprietary-linux/venus* $INSTALL/$(get_full_firmware_dir)/qcom/venus-1.8/
-    rm $INSTALL/$(get_full_firmware_dir)/firmware.tar
+  FW_TARGET_DIR="$PKG_BUILD/.install-firmware"
+  
+  mkdir -p $FW_TARGET_DIR/qcom/venus-1.8/
+    cp -a linux-board-support-package-v${PKG_VERSION%.0}/proprietary-linux/* $FW_TARGET_DIR
+    cp -a linux-board-support-package-v${PKG_VERSION%.0}/proprietary-linux/venus* $FW_TARGET_DIR/qcom/venus-1.8/
+    rm $FW_TARGET_DIR/firmware.tar
 
     MTOOLS_SKIP_CHECK=1 mcopy -n -i linux-board-support-package-v${PKG_VERSION%.0}/bootloaders-linux/NON-HLOS.bin \
                                     ::image/modem.* \
                                     ::image/mba.mbn \
                                     ::image/wcnss.* \
-                                    $INSTALL/$(get_full_firmware_dir)
+                                    $FW_TARGET_DIR
 }

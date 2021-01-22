@@ -11,7 +11,7 @@ PKG_LONGDESC="Broadcom SDIO firmware used with LibreELEC"
 PKG_TOOLCHAIN="manual"
 
 post_makeinstall_target() {
-  FW_TARGET_DIR=$INSTALL/$(get_full_firmware_dir)
+  FW_TARGET_DIR=$PKG_BUILD/.install-firmware
 
   if find_file_path firmwares/$PKG_NAME.dat; then
     FW_LISTS="${FOUND_PATH}"

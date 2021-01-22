@@ -11,5 +11,8 @@ PKG_LONGDESC="realtek-firmware: firmwares for various realtek WLAN drivers"
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
-  DESTDIR=$INSTALL/$(get_kernel_overlay_dir) ./install
+  FW_TARGET_DIR="$PKG_BUILD/.install-firmware"
+
+  mkdir -p $FW_TARGET_DIR
+    cp -aT firmware $FW_TARGET_DIR
 }

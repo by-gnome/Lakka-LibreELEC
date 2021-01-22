@@ -19,7 +19,9 @@ unpack() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/$(get_full_firmware_dir)
-    cp -P firmware/vpu/vpu_fw_imx6d.bin $INSTALL/$(get_full_firmware_dir)
-    cp -P firmware/vpu/vpu_fw_imx6q.bin $INSTALL/$(get_full_firmware_dir)
+  FW_TARGET_DIR="$PKG_BUILD/.install-firmware"
+
+  mkdir -p $FW_TARGET_DIR
+    cp -P firmware/vpu/vpu_fw_imx6d.bin $FW_TARGET_DIR
+    cp -P firmware/vpu/vpu_fw_imx6q.bin $FW_TARGET_DIR
 }

@@ -25,7 +25,7 @@ post_patch() {
 
 # Install additional miscellaneous drivers
 makeinstall_target() {
-  FW_TARGET_DIR=$INSTALL/$(get_full_firmware_dir)
+  FW_TARGET_DIR=$PKG_BUILD/.install-firmware
 
   if find_file_path config/kernel-firmware.dat; then
     FW_LISTS="${FOUND_PATH}"
